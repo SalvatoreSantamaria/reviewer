@@ -1,0 +1,25 @@
+<div>
+  <p>Reviews for {{ rstrnt.data.restaurantName }} </p>
+  <button [routerLink]="['/restaurants/', rstrnt.data._id, 'review']">New Review</button>
+  <button [routerLink]="['/restaurants/']">List of Restaurants</button>
+
+
+</div>
+<div class="container">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Customer</th>
+        <th>Stars</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let review of reviews">
+        <td>{{ review.userName }}</td>
+        <td>{{ review.stars }}</td>
+        <td>{{ review.review }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

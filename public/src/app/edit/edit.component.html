@@ -1,0 +1,43 @@
+<div>
+  <h4>Edit a restaurant</h4>
+</div>
+
+<div>
+  <ul *ngIf="errors">
+      <li class="errors" *ngFor="let error of errors">{{error}}</li>
+    </ul>
+</div>
+
+
+<div class="form-group">
+  <form (submit)="onSubmit()" #form="ngForm">
+      <div>
+        <label for="name">Restaurant name</label>
+        <input type="text"
+          class="form-control"
+          name="restaurant.restaurantName"
+          required
+          minlength="1"
+          [(ngModel)]="updatedRestaurant.restaurantName"
+          #name="ngModel"
+        />
+      </div>
+
+      <div>
+          <label for="cuisine">Cuisine Type</label>
+          <input type="text"
+            name="restaurant.cuisine"
+            class="form-control"
+            required
+            minlength="1"
+            [(ngModel)]="updatedRestaurant.cuisine"
+            #type="ngModel"
+          />
+      </div>
+
+        <button [routerLink]="['/restaurants']">Cancel</button>
+      <button [disabled]="form.invalid">Edit</button>
+    </form>
+
+</div>
+

@@ -1,0 +1,56 @@
+<div>
+  <h4>Write a review for {{ thisRestaurant.data.restaurantName }}</h4>
+</div>
+<div class="border">
+<div>
+    <ul *ngIf="errors">
+        <li class="errors" *ngFor="let error of errors">{{error}}</li>
+      </ul>
+</div>
+
+<div>
+  <form (submit)="onSubmit()" #reviewForm="ngForm">
+    <!-- use the json pipe to see changes in real time
+   <p>{{ newUser | json }}</p> -->
+  <div>
+    <label for="name">Your Name</label>
+    <input type="text"
+    class="form-control"
+    name="userName"
+    required
+    minlength="0"
+    [(ngModel)]="newUser.userName"
+    #name='ngModel'
+    />
+  </div>
+
+
+  <div class="">
+      <div>
+          <label for="stars">Stars</label><br>
+          <input type="number"
+            name="stars"
+            required
+            [(ngModel)]="newUser.stars"
+            #stars="ngModel"
+          />
+        </div>
+
+        <div>
+          <label for="review">Review</label>
+          <input type="text"
+          class="form-control"
+          name="review"
+          required
+          [(ngModel)]="newUser.review"
+          #review='ngModel'
+          />
+        </div>
+
+    <button [disabled]="reviewForm.invalid">Submit</button>
+</div>
+</form>
+<form (submit)="onCancel()" #cancelForm="ngForm">
+  <button>Cancel</button>
+</form>
+</div>
